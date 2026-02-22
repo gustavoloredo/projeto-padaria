@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block main %}
+<div class="container">
+  <br />
+  <div class="d-flex justify-content-center">
+    <h1>Cadastrar Produto</h1>
+  </div>
+  <hr />
+  <form action="{{ url_for('cadastrar_produto') }}" class="form-control" enctype="multipart/form-data" method="post">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Nome do Produto</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        name="nome"
+        required/>
+    </div>
+    <div class="mb-3">
+      <label for="descricao" class="form-label">Descrição do Produto</label>
+      <textarea class="form-control" name="descricao" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="ingredientes" class="form-label">Ingredientes</label>
+      <textarea class="form-control" name="ingredientes" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="origem" class="form-label">Origem</label>
+      <input type="text" class="form-control" name="origem" />
+    </div>
+    <div class="mb-3">
+      <label for="imagem" class="form-label">Imagem</label>
+      <input type="file" class="form-control" name="imagem" />
+    </div>
+    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+    </div>
+    
+  </form>
+</div>
+<br>
+{% if status %}
+  {% if status.type == 'sucesso' %}
+    <div class="alert alert-success mt-3">
+      {{ status.mensagem }}
+    </div>
+  {% elif status.type == 'erro' %}
+    <div class="alert alert-danger mt-3">
+      {{ status.mensagem }}
+    </div>
+  {% endif %}
+{% endif %}
+  
+
+{% endblock %}
